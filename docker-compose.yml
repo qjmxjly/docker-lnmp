@@ -27,7 +27,7 @@ services:
 
   # database
   mysql:
-    image: mariadb:latest
+    image: mariadb:10.9.4
     ports:
       # Allow client to access 3306
       - "3306:3306"
