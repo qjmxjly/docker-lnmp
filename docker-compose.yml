@@ -8,7 +8,7 @@ nginx:
     # app
     - /opt/wwwroot:/usr/share/nginx/html
     # nginx configs
-    - ./opt/nginx:/etc/nginx
+    - /opt/nginx:/etc/nginx
   links:
     - fpm:__DOCKER_PHP_FPM__
 
