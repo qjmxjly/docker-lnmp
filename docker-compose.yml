@@ -14,6 +14,7 @@ services:
       - /opt/nginx/conf.d/:/etc/nginx/conf.d/:ro
     links:
       - fpm:__DOCKER_PHP_FPM__
+    restart: always
 
   # php-fpm
   fpm:
@@ -26,6 +27,7 @@ services:
       - /opt/php/php.ini:/usr/local/etc/php/php.ini:ro
     links:
       - mysql:mysql
+    restart: always
 
   # database
   mysql:
@@ -38,3 +40,4 @@ services:
       - /opt/mysql:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=123456
+    restart: always
