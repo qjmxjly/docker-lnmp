@@ -2,7 +2,7 @@ version: '2'
 services:
   # web server
   nginx:
-    image: nginx:latest
+    image: nginx:1.23.2-alpine
     ports:
       - "80:80"
       - "443:443"
