@@ -10,7 +10,8 @@ services:
       # app
       - /opt/wwwroot:/usr/share/nginx/html
       # nginx configs
-      - /opt/nginx:/etc/nginx
+      - /opt/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - /opt/nginx/conf.d/:/etc/nginx/conf.d/:ro
     links:
       - fpm:__DOCKER_PHP_FPM__
 
