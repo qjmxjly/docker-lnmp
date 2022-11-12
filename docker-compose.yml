@@ -22,6 +22,8 @@ services:
       - "9000"
     volumes:
       - /opt/wwwroot:/usr/share/nginx/html
+      # Your php.ini
+      - /opt/php/php.ini:/usr/local/etc/php/php.ini:ro
     links:
       - mysql:mysql
 
