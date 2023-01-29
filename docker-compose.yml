@@ -2,16 +2,16 @@ version: '2'
 services:
   # web server
   nginx:
-    image: nginx:1.23.2-alpine
+    image: nginx:alpine
     ports:
       - "80:80"
       - "443:443"
     volumes:
       # app
-      - /opt/wwwroot:/usr/share/nginx/html
+      - /opt/docker/wwwroot:/usr/share/nginx/html
       # nginx configs
-      - /opt/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
-      - /opt/nginx/conf.d/:/etc/nginx/conf.d/:ro
+      - /opt/docker/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - /opt/docker/nginx/conf.d/:/etc/nginx/conf.d/:ro
     links:
       - fpm:__DOCKER_PHP_FPM__
     restart: always
@@ -22,9 +22,9 @@ services:
     ports:
       - "9000"
     volumes:
-      - /opt/wwwroot:/usr/share/nginx/html
+      - /opt/docker/wwwroot:/usr/share/nginx/html
       # Your php.ini
-      - /opt/php/php.ini:/usr/local/etc/php/php.ini:ro
+      - /opt/docker/php/php.ini:/usr/local/etc/php/php.ini:ro
     links:
       - mysql:mysql
     restart: always
@@ -37,7 +37,7 @@ services:
       - "3306:3306"
     volumes:
       # NOTE: your data will be stored in ./mysql
-      - /opt/mysql:/var/lib/mysql
+      - /opt/docker/mysql:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=123456
     restart: always
